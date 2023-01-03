@@ -1,8 +1,7 @@
 package com.example.chess.model;
 
-public class Board {
-    private int id;//(не точно)
+public class Game {
     private User whiteUser;
     private User blackUser;
-    private Cage[][] cages;
+    private Game game;
 }
