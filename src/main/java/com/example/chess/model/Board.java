@@ -4,5 +4,5 @@ public class Board {
     private int id;//(не точно)
     private User whiteUser;
     private User blackUser;
-    private Cage[][] board;
+    private Cage[][] cages;
 }
