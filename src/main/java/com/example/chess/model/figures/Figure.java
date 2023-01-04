@@ -4,5 +4,8 @@ import com.example.chess.model.Color;
 
 public abstract class Figure {
     private Color color;
-    private String name;
+
+    public Figure(Color color) {
+        this.color = color;
+    }
 }

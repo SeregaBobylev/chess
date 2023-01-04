@@ -6,4 +6,5 @@ public class Game {
     private User whiteUser;
     private User blackUser;
     private Board board;
+
 }
