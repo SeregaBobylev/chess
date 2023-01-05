@@ -1,16 +1,18 @@
-package com.example.chess.model;
+package com.example.chess.dto;
 
-import com.example.chess.model.dbModel.Player;
+import com.example.chess.model.GameStatus;
 import com.example.chess.model.figures.boaed.Board;
 
-public class Game {
-    private Player whitePlayer;
-    private Player blackPlayer;
+public class GameDTO {
+    private PlayerDTO whitePlayer;
+    private PlayerDTO blackPlayer;
     private Board board;
-    private Player nextTurn;
+    private PlayerDTO nextTurn;
     private GameStatus status;
 
-    public Game(Player whitePlayer, Player blackPlayer, Board board, Player nextTurn, GameStatus status) {
+    public GameDTO() {
+    }
+    public GameDTO(PlayerDTO whitePlayer, PlayerDTO blackPlayer, Board board, PlayerDTO nextTurn, GameStatus status) {
         this.whitePlayer = whitePlayer;
         this.blackPlayer = blackPlayer;
         this.board = board;
@@ -18,22 +20,19 @@ public class Game {
         this.status = status;
     }
 
-    public Game() {
-    }
-
-    public Player getWhitePlayer() {
+    public PlayerDTO getWhitePlayer() {
         return whitePlayer;
     }
 
-    public void setWhitePlayer(Player whitePlayer) {
+    public void setWhitePlayer(PlayerDTO whitePlayer) {
         this.whitePlayer = whitePlayer;
     }
 
-    public Player getBlackPlayer() {
+    public PlayerDTO getBlackPlayer() {
         return blackPlayer;
     }
 
-    public void setBlackPlayer(Player blackPlayer) {
+    public void setBlackPlayer(PlayerDTO blackPlayer) {
         this.blackPlayer = blackPlayer;
     }
 
@@ -45,11 +44,11 @@ public class Game {
         this.board = board;
     }
 
-    public Player getNextTurn() {
+    public PlayerDTO getNextTurn() {
         return nextTurn;
     }
 
-    public void setNextTurn(Player nextTurn) {
+    public void setNextTurn(PlayerDTO nextTurn) {
         this.nextTurn = nextTurn;
     }
 
