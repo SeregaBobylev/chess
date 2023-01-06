@@ -11,6 +11,7 @@ public class Knight extends Figure{
 
     @Override
     public boolean checkStep(Step step, Board board) {
+        
         return false;
     }
 }
