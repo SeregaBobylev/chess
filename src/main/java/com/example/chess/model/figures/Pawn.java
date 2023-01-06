@@ -11,9 +11,7 @@ public class Pawn extends Figure {
     public Pawn(Color color) {
         super(color);
     }
-
     private boolean firstMove = false;
-
     @Override
     public boolean checkStep(Step step, Board board) {
         int colStart = step.getStart().getCol();
