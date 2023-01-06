@@ -6,10 +6,15 @@ import com.example.chess.model.figures.boaed.Board;
 
 public abstract class Figure {
     private Color color;
-    private boolean firstMove=false;
+
     public Figure(Color color) {
         this.color = color;
     }
+
+    public Color getColor() {
+        return color;
+    }
+
     public abstract boolean checkStep(Step step, Board board);
     private boolean checkPosition(){
         return false;
