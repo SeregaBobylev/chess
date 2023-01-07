@@ -20,8 +20,10 @@ public class Knight extends Figure{
 
         Cage cagesBoard[][] = board.getCages();
         Figure figure = step.getStart().getFigure();
-
-
+        if((Math.abs(colEnd-colStart)==1 && Math.abs(rowEnd-colStart)==2)
+                || (Math.abs(colEnd-colStart)==2 && Math.abs(rowEnd-rowStart)==1)){
+            return cagesBoard[colEnd][rowEnd].getFigure().getColor()==figure.getColor()?false:true;
+        }
         return false;
     }
 }
