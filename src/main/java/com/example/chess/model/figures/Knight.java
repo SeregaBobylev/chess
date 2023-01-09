@@ -9,7 +9,6 @@ public class Knight extends Figure{
     public Knight(Color color) {
         super(color);
     }
-
     @Override
     public boolean checkStep(Step step, Board board) {
         int colStart = step.getStart().getCol();

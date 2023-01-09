@@ -2,13 +2,36 @@ package com.example.chess.model;
 
 import com.example.chess.model.dbModel.Player;
 import com.example.chess.model.figures.boaed.Board;
+import jakarta.persistence.*;
 
+import javax.annotation.processing.Generated;
+import java.util.UUID;
+
+@Entity
+@Table(name = "game")
 public class Game {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID uuid;
+    @MapsId
+    @ManyToOne
+    @JoinColumn
     private Player whitePlayer;
+
+    @MapsId
+    @ManyToOne
+    @JoinColumn
     private Player blackPlayer;
-    private Board board;
+    @MapsId
+    @ManyToOne
+    @JoinColumn
     private Player nextTurn;
+    @Column
     private GameStatus status;
+    @Transient
+    private Board board;
+
+
 
     public Game(Player whitePlayer, Player blackPlayer, Board board, Player nextTurn, GameStatus status) {
         this.whitePlayer = whitePlayer;
@@ -19,6 +42,14 @@ public class Game {
     }
 
     public Game() {
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public Player getWhitePlayer() {

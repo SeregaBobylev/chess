@@ -28,7 +28,8 @@ public class GameMapper {
                 playerMapper.toDTO(game.getBlackPlayer()),
                 game.getBoard(),
                 playerMapper.toDTO(game.getNextTurn()),
-                game.getStatus()
+                game.getStatus(),
+                game.getUuid()
         );
     }
 }

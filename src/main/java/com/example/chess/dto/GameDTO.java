@@ -3,7 +3,10 @@ package com.example.chess.dto;
 import com.example.chess.model.GameStatus;
 import com.example.chess.model.figures.boaed.Board;
 
+import java.util.UUID;
+
 public class GameDTO {
+    private UUID uuid;
     private PlayerDTO whitePlayer;
     private PlayerDTO blackPlayer;
     private Board board;
@@ -12,12 +15,21 @@ public class GameDTO {
 
     public GameDTO() {
     }
-    public GameDTO(PlayerDTO whitePlayer, PlayerDTO blackPlayer, Board board, PlayerDTO nextTurn, GameStatus status) {
+    public GameDTO(PlayerDTO whitePlayer, PlayerDTO blackPlayer, Board board, PlayerDTO nextTurn, GameStatus status,UUID uuid) {
         this.whitePlayer = whitePlayer;
         this.blackPlayer = blackPlayer;
         this.board = board;
         this.nextTurn = nextTurn;
         this.status = status;
+        this.uuid = uuid;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public PlayerDTO getWhitePlayer() {

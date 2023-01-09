@@ -7,7 +7,7 @@ import com.example.chess.model.figures.*;
 public class Board {
     private Cage[][] cages;
     public Board() {
-
+        placeFigures();
     }
 
     public Cage[][] getCages() {
