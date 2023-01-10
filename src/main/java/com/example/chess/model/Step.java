@@ -8,6 +8,12 @@ public class Step {
     private Cage start;
     private Cage end;
 
+    public Step(Player player, Cage start, Cage end) {
+        this.player = player;
+        this.start = start;
+        this.end = end;
+    }
+
     public Player getPlayer() {
         return player;
     }

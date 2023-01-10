@@ -1,8 +1,10 @@
 package com.example.chess.service;
 
 import com.example.chess.dao.GameRepository;
+import com.example.chess.dto.StepDTO;
 import com.example.chess.exception.NotFoundException;
 import com.example.chess.model.Step;
+import com.example.chess.model.boaed.Cage;
 import com.example.chess.model.dbModel.Game;
 import com.example.chess.model.GameStatus;
 import com.example.chess.model.dbModel.Player;
@@ -30,7 +32,8 @@ public class GameService {
         UUID uuid = UUID.randomUUID();
         game.setUuid(uuid);
         games.put(uuid,game);
-        gameRepository.save(game);
+//        No work
+//        gameRepository.save(game);
     return game;
     }
     public Game get(UUID uuid){
@@ -40,9 +43,13 @@ public class GameService {
         }
         return  game.get();
     }
+    public Game getMap(UUID uuid){
+        return games.get(uuid);
+    }
+//
     public Game connected(UUID uuidGame,Player player){
 //        Game game = games.get(uuid);
-        Game game = get(uuidGame);
+        Game game = getMap(uuidGame);
         if(game.getStatus()!=GameStatus.WAIT_PLAYER){
 //            exception
         }
@@ -50,8 +57,7 @@ public class GameService {
         game.setStatus(GameStatus.ACTION);
         return game;
     }
-    public Step step(UUID uuidGame,Step step){
-
-        return  step;
+    public Boolean step(UUID uuidGame, Step step){
+        return step.getStart().getFigure().checkStep(step, games.get(uuidGame).getBoard());
     }
 }

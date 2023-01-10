@@ -4,6 +4,7 @@ import com.example.chess.dto.GameDTO;
 import com.example.chess.dto.StepDTO;
 import com.example.chess.dto.mapper.GameMapper;
 import com.example.chess.dto.mapper.PlayerMapper;
+import com.example.chess.dto.mapper.StepMapper;
 import com.example.chess.model.dbModel.Player;
 import com.example.chess.service.GameService;
 import com.example.chess.service.PlayerService;
@@ -25,6 +26,9 @@ public class GameController {
     @Autowired
     PlayerService playerService;
 
+    @Autowired
+    StepMapper stepMapper;
+
     @PostMapping("/create")
     public GameDTO createGame(@RequestBody Player player){
         return gameMapper.toDTO(gameService.create(player));
@@ -34,11 +38,11 @@ public class GameController {
         System.out.println(player);
         return gameMapper.toDTO(gameService.connected(uuid,player));
     }
-    @PostMapping("/{uuid}/step")
-    public StepDTO step(@PathVariable UUID uuid,@RequestBody StepDTO stepDTO){
-        Player player = playerService.get(uuid);
+    @PostMapping("/{uuidPlayer}/step")
+    public Boolean step(@PathVariable UUID uuidGame,@PathVariable UUID uuidPlayer,@RequestBody StepDTO stepDTO){
+        Player player = playerService.get(uuidPlayer);
+        return (gameService.step(uuidGame,stepMapper.fromDTO(stepDTO,player)));
 
-        return null;
     }
 
 }
