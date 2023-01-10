@@ -2,7 +2,7 @@ package com.example.chess.model.figures;
 
 import com.example.chess.model.Color;
 import com.example.chess.model.Step;
-import com.example.chess.model.figures.boaed.Board;
+import com.example.chess.model.boaed.Board;
 
 public class Bishop extends Figure{
     public Bishop(Color color) {

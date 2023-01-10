@@ -1,6 +1,6 @@
 package com.example.chess.dto.mapper;
 
-import com.example.chess.model.Game;
+import com.example.chess.model.dbModel.Game;
 import com.example.chess.dto.GameDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

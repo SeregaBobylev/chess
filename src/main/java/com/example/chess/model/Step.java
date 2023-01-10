@@ -1,7 +1,7 @@
 package com.example.chess.model;
 
 import com.example.chess.model.dbModel.Player;
-import com.example.chess.model.figures.boaed.Cage;
+import com.example.chess.model.boaed.Cage;
 
 public class Step {
     private Player player;

@@ -1,6 +1,6 @@
 package com.example.chess.dao;
 
-import com.example.chess.model.Game;
+import com.example.chess.model.dbModel.Game;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;

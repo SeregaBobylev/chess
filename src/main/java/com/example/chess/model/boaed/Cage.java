@@ -1,4 +1,4 @@
-package com.example.chess.model.figures.boaed;
+package com.example.chess.model.boaed;
 
 import com.example.chess.model.Color;
 import com.example.chess.model.figures.Figure;

@@ -2,8 +2,7 @@ package com.example.chess.model.figures;
 
 import com.example.chess.model.Color;
 import com.example.chess.model.Step;
-import com.example.chess.model.figures.boaed.Board;
-import com.example.chess.model.figures.boaed.Cage;
+import com.example.chess.model.boaed.Board;
 
 public class Rook extends Figure {
     public Rook(Color color) {

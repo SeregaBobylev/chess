@@ -1,7 +1,7 @@
 package com.example.chess.dto;
 
 import com.example.chess.model.GameStatus;
-import com.example.chess.model.figures.boaed.Board;
+import com.example.chess.model.boaed.Board;
 
 import java.util.UUID;
 

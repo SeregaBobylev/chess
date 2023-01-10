@@ -2,10 +2,8 @@ package com.example.chess.model.figures;
 
 import com.example.chess.model.Color;
 import com.example.chess.model.Step;
-import com.example.chess.model.figures.boaed.Board;
-import com.example.chess.model.figures.boaed.Cage;
-
-import static java.lang.Math.*;
+import com.example.chess.model.boaed.Board;
+import com.example.chess.model.boaed.Cage;
 
 public class Pawn extends Figure {
     public Pawn(Color color) {

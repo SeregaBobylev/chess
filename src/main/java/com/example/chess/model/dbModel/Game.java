@@ -1,10 +1,9 @@
-package com.example.chess.model;
+package com.example.chess.model.dbModel;
 
-import com.example.chess.model.dbModel.Player;
-import com.example.chess.model.figures.boaed.Board;
+import com.example.chess.model.GameStatus;
+import com.example.chess.model.boaed.Board;
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
 import java.util.UUID;
 
 @Entity
