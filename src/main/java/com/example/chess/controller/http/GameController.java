@@ -19,6 +19,7 @@ import java.util.UUID;
 public class GameController {
     @Autowired
     GameService gameService;
+
     @Autowired
     GameMapper gameMapper;
     @Autowired

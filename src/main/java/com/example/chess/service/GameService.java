@@ -30,6 +30,7 @@ public class GameService {
         game.setStatus(GameStatus.WAIT_PLAYER);
         System.out.println(game);
         UUID uuid = UUID.randomUUID();
+        System.out.println(uuid);
         game.setUuid(uuid);
         games.put(uuid,game);
 //        No work
