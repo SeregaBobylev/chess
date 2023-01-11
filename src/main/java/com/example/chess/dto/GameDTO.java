@@ -15,7 +15,8 @@ public class GameDTO {
 
     public GameDTO() {
     }
-    public GameDTO(PlayerDTO whitePlayer, PlayerDTO blackPlayer, Board board, PlayerDTO nextTurn, GameStatus status,UUID uuid) {
+
+    public GameDTO(PlayerDTO whitePlayer, PlayerDTO blackPlayer, Board board, PlayerDTO nextTurn, GameStatus status, UUID uuid) {
         this.whitePlayer = whitePlayer;
         this.blackPlayer = blackPlayer;
         this.board = board;

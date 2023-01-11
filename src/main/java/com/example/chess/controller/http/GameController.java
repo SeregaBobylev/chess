@@ -35,9 +35,10 @@ public class GameController {
         System.out.println(player);
         return gameMapper.toDTO(gameService.connected(uuid,player));
     }
-    @PostMapping("/{uuidPlayer}/step")
+    @PostMapping("/{uuidPlayer}/{uuidGame}/step")
     public Boolean step(@PathVariable UUID uuidGame,@PathVariable UUID uuidPlayer,@RequestBody StepDTO stepDTO){
         Player player = playerService.get(uuidPlayer);
+        System.out.println(player);
         return (gameService.step(uuidGame,stepDTO,player));
 
     }

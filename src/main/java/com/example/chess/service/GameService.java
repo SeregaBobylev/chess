@@ -76,26 +76,25 @@ public class GameService {
 
     public Boolean step(UUID uuidGame, StepDTO stepDTO, Player player) {
         Game game = getMap(uuidGame);
+        return checkValidStep(game, stepDTO,player);
+//        check mate
+//        checkShah
+
+    }
+    private boolean checkValidStep(Game game,StepDTO stepDTO,Player player){
         PairLocation locationStartCage = convertedCharInInteger(stepDTO.getStart());
         PairLocation locationEndCage = convertedCharInInteger(stepDTO.getEnd());
         Step step = new Step(player,
                 game.getBoard().getCages()[locationStartCage.col][locationStartCage.row],
                 game.getBoard().getCages()[locationEndCage.col][locationEndCage.row]
         );
-        return step.getStart().getFigure().checkStep(step, games.get(uuidGame).getBoard());
+        return step.getStart().getFigure().checkStep(step, game.getBoard());
     }
 
     private PairLocation convertedCharInInteger(String locationCage) {
-        return new PairLocation(Integer.parseInt(String.valueOf(locationCage.charAt(0))) - 1, chatInInt.get(locationCage.charAt(1)));
+        return new PairLocation(chatInInt.get(locationCage.charAt(1)),Integer.parseInt(String.valueOf(locationCage.charAt(0))) - 1);
     }
 
-    class PairLocation {
-        public final int col;
-        public final int row;
-
-        public PairLocation(int col, int row) {
-            this.col = col;
-            this.row = row;
-        }
+    record PairLocation(int col, int row) {
     }
 }

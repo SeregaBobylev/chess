@@ -16,7 +16,7 @@ public class Board {
 
     public void placeFigures() {
         reset();
-        placeHighFigures(Color.BLACK,0);
+        placeHighFigures(Color.WHITE,0);
         placePawns(Color.WHITE, 1);
         placeHighFigures(Color.BLACK,7);
         placePawns(Color.BLACK, 6);
