@@ -1,7 +1,7 @@
 package com.example.chess.model;
 
 import com.example.chess.model.dbModel.Player;
-import com.example.chess.model.boaed.Cage;
+import com.example.chess.model.board.Cage;
 
 public class Step {
     private Player player;
@@ -36,5 +36,24 @@ public class Step {
 
     public void setEnd(Cage end) {
         this.end = end;
+    }
+
+    public boolean checkBoundaries(){
+        return start.checkBoundaries() && end.checkBoundaries();
+    }
+    public boolean isDirectStep(){
+        return !isStartPosEqualsEndPos() && start.getCol()==end.getCol();
+    }
+    public boolean isVerticalStep(){
+        return !isStartPosEqualsEndPos() && start.getRow()==end.getRow();
+    }
+    public boolean isHorizontalStep(){
+        return !isStartPosEqualsEndPos() && start.getCol()==end.getCol();
+    }
+    public boolean isDiagonalStep(){
+        return !isStartPosEqualsEndPos() && Math.abs(end.getCol()-start.getCol())==Math.abs(end.getRow()-start.getRow());
+    }
+    public boolean isStartPosEqualsEndPos(){
+        return start.getCol()==end.getCol() && start.getRow()==end.getRow();
     }
 }

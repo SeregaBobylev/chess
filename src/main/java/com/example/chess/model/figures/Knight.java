@@ -2,27 +2,16 @@ package com.example.chess.model.figures;
 
 import com.example.chess.model.Color;
 import com.example.chess.model.Step;
-import com.example.chess.model.boaed.Board;
-import com.example.chess.model.boaed.Cage;
+import com.example.chess.model.board.Board;
+import com.example.chess.model.board.Cage;
 
 public class Knight extends Figure{
     public Knight(Color color) {
         super(color);
     }
+
     @Override
-    public boolean checkStep(Step step, Board board) {
-        int colStart = step.getStart().getCol();
-        int rowStart = step.getStart().getRow();
-
-        int colEnd = step.getEnd().getCol();
-        int rowEnd = step.getEnd().getRow();
-
-        Cage cagesBoard[][] = board.getCages();
-        Figure figure = step.getStart().getFigure();
-        if((Math.abs(colEnd-colStart)==1 && Math.abs(rowEnd-colStart)==2)
-                || (Math.abs(colEnd-colStart)==2 && Math.abs(rowEnd-rowStart)==1)){
-            return cagesBoard[colEnd][rowEnd].getFigure().getColor()==figure.getColor()?false:true;
-        }
-        return false;
+    protected boolean checkStepSpecific(Step step, Board board) {
+        return Math.abs(step.getEnd().getCol()-step.getStart().getCol())*Math.abs(step.getEnd().getRow()-step.getStart().getRow())==2;
     }
 }

@@ -2,7 +2,7 @@ package com.example.chess.model.figures;
 
 import com.example.chess.model.Color;
 import com.example.chess.model.Step;
-import com.example.chess.model.boaed.Board;
+import com.example.chess.model.board.Board;
 
 public class Bishop extends Figure{
     public Bishop(Color color) {
@@ -10,7 +10,8 @@ public class Bishop extends Figure{
     }
 
     @Override
-    public boolean checkStep(Step step, Board board) {
-        return false;
+    protected boolean checkStepSpecific(Step step, Board board) {
+        return step.isDiagonalStep() && board.isStepDirectAndPathFree(step);
     }
+
 }

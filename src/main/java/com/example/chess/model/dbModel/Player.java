@@ -10,16 +10,17 @@ public class Player {
     private UUID uuid;
     @Column(name = "nickname")
     private String nickname;
-
-    public UUID getUuid() {
-        return uuid;
-    }
     public Player(){
     }
 
     public Player(UUID uuid, String nickname) {
         this.uuid = uuid;
         this.nickname = nickname;
+    }
+
+
+    public UUID getUuid() {
+        return uuid;
     }
 
     public void setUuid(UUID uuid) {

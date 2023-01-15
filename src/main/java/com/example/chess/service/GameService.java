@@ -7,7 +7,7 @@ import com.example.chess.model.Step;
 import com.example.chess.model.dbModel.Game;
 import com.example.chess.model.GameStatus;
 import com.example.chess.model.dbModel.Player;
-import com.example.chess.model.boaed.Board;
+import com.example.chess.model.board.Board;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +31,6 @@ public class GameService {
     }};
     @Autowired
     private GameRepository gameRepository;
-    //    @Autowired
-//    private
     private HashMap<UUID, Game> games = new HashMap<>();
 
     public Game create(Player player) {
@@ -41,12 +39,11 @@ public class GameService {
         game.setBoard(new Board());
         game.setStatus(GameStatus.WAIT_PLAYER);
         System.out.println(game);
-        UUID uuid = UUID.randomUUID();
+//        UUID uuid = UUID.randomUUID();
+        UUID uuid = UUID.fromString("7f74e944-3976-45f6-a677-58b792cdf670");
         System.out.println(uuid);
         game.setUuid(uuid);
         games.put(uuid, game);
-//        No work
-//        gameRepository.save(game);
         return game;
     }
 
@@ -82,19 +79,21 @@ public class GameService {
 
     }
     private boolean checkValidStep(Game game,StepDTO stepDTO,Player player){
+        Step step = mapperFromStep(game,stepDTO,player);
+        return step.getStart().getFigure().checkStep(step, game.getBoard());
+    }
+    private Step mapperFromStep(Game game,StepDTO stepDTO,Player player){
         PairLocation locationStartCage = convertedCharInInteger(stepDTO.getStart());
         PairLocation locationEndCage = convertedCharInInteger(stepDTO.getEnd());
-        Step step = new Step(player,
+        return new Step(player,
                 game.getBoard().getCages()[locationStartCage.col][locationStartCage.row],
                 game.getBoard().getCages()[locationEndCage.col][locationEndCage.row]
         );
-        return step.getStart().getFigure().checkStep(step, game.getBoard());
     }
 
     private PairLocation convertedCharInInteger(String locationCage) {
         return new PairLocation(chatInInt.get(locationCage.charAt(1)),Integer.parseInt(String.valueOf(locationCage.charAt(0))) - 1);
     }
-
     record PairLocation(int col, int row) {
     }
 }

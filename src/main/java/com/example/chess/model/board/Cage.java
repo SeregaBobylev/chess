@@ -1,4 +1,4 @@
-package com.example.chess.model.boaed;
+package com.example.chess.model.board;
 
 import com.example.chess.model.Color;
 import com.example.chess.model.figures.Figure;
@@ -33,5 +33,9 @@ public class Cage {
 
     public void setFigure(Figure figure) {
         this.figure = figure;
+    }
+
+    public boolean checkBoundaries() {
+        return true;
     }
 }

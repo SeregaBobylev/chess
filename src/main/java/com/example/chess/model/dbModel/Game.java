@@ -1,7 +1,7 @@
 package com.example.chess.model.dbModel;
 
 import com.example.chess.model.GameStatus;
-import com.example.chess.model.boaed.Board;
+import com.example.chess.model.board.Board;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -27,6 +27,8 @@ public class Game {
     private Player nextTurn;
     @Column
     private GameStatus status;
+//    @Column
+//    @Convert(converter = ConvertJson.class)
     @Transient
     private Board board;
 
