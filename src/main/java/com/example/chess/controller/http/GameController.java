@@ -2,11 +2,11 @@ package com.example.chess.controller.http;
 
 import com.example.chess.dto.GameDTO;
 import com.example.chess.dto.StepDTO;
-import com.example.chess.dto.mapper.GameMapper;
-import com.example.chess.dto.mapper.PlayerMapper;
+import com.example.chess.mapper.GameMapper;
+import com.example.chess.mapper.PlayerMapper;
 import com.example.chess.model.dbModel.Player;
 import com.example.chess.service.GameService;
-import com.example.chess.service.PlayerService;
+import com.example.chess.service.auth.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

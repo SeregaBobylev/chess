@@ -1,4 +1,4 @@
-package com.example.chess.dto.mapper;
+package com.example.chess.mapper;
 
 import com.example.chess.model.dbModel.Game;
 import com.example.chess.dto.GameDTO;
