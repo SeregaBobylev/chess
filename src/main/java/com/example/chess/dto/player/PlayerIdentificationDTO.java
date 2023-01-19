@@ -1,10 +1,15 @@
-package com.example.chess.controller.http;
+package com.example.chess.dto.player;
 
 public class PlayerIdentificationDTO {
     private String nickname;
     private String token;
 
     public PlayerIdentificationDTO() {
+    }
+
+    public PlayerIdentificationDTO(String nickname, String token) {
+        this.nickname = nickname;
+        this.token = token;
     }
 
     public String getNickname() {

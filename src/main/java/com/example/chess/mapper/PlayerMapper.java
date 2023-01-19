@@ -1,7 +1,7 @@
 package com.example.chess.mapper;
 
 import com.example.chess.model.dbModel.Player;
-import com.example.chess.dto.PlayerDTO;
+import com.example.chess.dto.player.PlayerDTO;
 import org.springframework.stereotype.Component;
 
 @Component

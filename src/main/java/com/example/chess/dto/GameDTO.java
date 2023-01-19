@@ -1,5 +1,6 @@
 package com.example.chess.dto;
 
+import com.example.chess.dto.player.PlayerDTO;
 import com.example.chess.model.GameStatus;
 import com.example.chess.model.board.Board;
 

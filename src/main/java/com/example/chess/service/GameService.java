@@ -1,7 +1,9 @@
 package com.example.chess.service;
 
 import com.example.chess.dao.GameRepository;
+import com.example.chess.dao.PlayerRepository;
 import com.example.chess.dto.StepDTO;
+import com.example.chess.dto.player.PlayerIdentificationDTO;
 import com.example.chess.exception.NotFoundException;
 import com.example.chess.model.Step;
 import com.example.chess.model.dbModel.Game;
@@ -31,9 +33,13 @@ public class GameService {
     }};
     @Autowired
     private GameRepository gameRepository;
+
+    @Autowired
+    private PlayerRepository playerRepository;
     private HashMap<UUID, Game> games = new HashMap<>();
 
-    public Game create(Player player) {
+    public Game create(PlayerIdentificationDTO playerIdentificationDTO) {
+        Player player =  playerRepository.findByNickname(playerIdentificationDTO.getNickname()).get(0);
         Game game = new Game();
         game.setWhitePlayer(player);
         game.setBoard(new Board());

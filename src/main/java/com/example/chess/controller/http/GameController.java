@@ -1,7 +1,9 @@
 package com.example.chess.controller.http;
 
+import com.example.chess.dao.PlayerRepository;
 import com.example.chess.dto.GameDTO;
 import com.example.chess.dto.StepDTO;
+import com.example.chess.dto.player.PlayerIdentificationDTO;
 import com.example.chess.mapper.GameMapper;
 import com.example.chess.mapper.PlayerMapper;
 import com.example.chess.model.dbModel.Player;
@@ -25,9 +27,9 @@ public class GameController {
     PlayerService playerService;
 
 
-    @PostMapping("/create")
-    public GameDTO createGame(@RequestBody Player player){
-        return gameMapper.toDTO(gameService.create(player));
+    @GetMapping("/create")
+    public GameDTO createGame(@CookieValue String token,@CookieValue String nickname){
+        return gameMapper.toDTO(gameService.create(new PlayerIdentificationDTO(nickname,token)));
     }
     @PostMapping("/connected/{uuid}")
     public GameDTO connectedGame(@PathVariable UUID uuid,@RequestBody Player player){

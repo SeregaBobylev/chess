@@ -1,4 +1,4 @@
-package com.example.chess.dto;
+package com.example.chess.dto.player;
 import java.util.UUID;
 
 public class PlayerDTO {

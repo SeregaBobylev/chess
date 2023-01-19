@@ -1,4 +1,4 @@
-package com.example.chess.dto;
+package com.example.chess.dto.player;
 
 public class PlayerRequestAuthDTO {
     private String login;

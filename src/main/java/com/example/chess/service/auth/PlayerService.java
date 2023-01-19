@@ -1,10 +1,10 @@
 package com.example.chess.service.auth;
 
-import com.example.chess.controller.http.PlayerIdentificationDTO;
-import com.example.chess.dto.PlayerRequestAuthDTO;
+import com.example.chess.dto.player.PlayerIdentificationDTO;
+import com.example.chess.dto.player.PlayerRequestAuthDTO;
 import com.example.chess.dao.PlayerRepository;
-import com.example.chess.dto.PlayerRequestRegisterDTO;
-import com.example.chess.dto.PlayerResponseDTO;
+import com.example.chess.dto.player.PlayerRequestRegisterDTO;
+import com.example.chess.dto.player.PlayerResponseDTO;
 import com.example.chess.mapper.PlayerMapper;
 import com.example.chess.exception.NotFoundException;
 import com.example.chess.mapper.PlayerRegisterMapper;
@@ -52,7 +52,7 @@ public class PlayerService {
 
     public PlayerResponseDTO auth(PlayerRequestAuthDTO playerRequestAuthDTO) {
         Player player =  playerRepository.findByNickname(playerRequestAuthDTO.getLogin()).get(0);
-        return new PlayerResponseDTO(player.getToken(), true,player.getUuid());
+        return new PlayerResponseDTO(player.getToken(), true,player.getUuid(),player.getNickname());
     }
 
     public boolean identification(PlayerIdentificationDTO playerIdentificationDTO) {

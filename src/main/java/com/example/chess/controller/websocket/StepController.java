@@ -16,7 +16,7 @@ public class StepController {
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
     @MessageMapping("/chat/{uuidGame}")
-    public void processMessage(@Payload Step step, @RequestParam UUID uuidGame,@RequestHeader("uuid") String uuidUser ) {
+    public void processMessage(@Payload Step step, @RequestParam UUID uuidGame, @RequestHeader("uuid") String uuidUser ) {
         System.out.println(uuidUser);
         //Тут проверка шага и тд
         messagingTemplate.convertAndSendToUser(uuidGame.toString(),"/queue/messages", step);
