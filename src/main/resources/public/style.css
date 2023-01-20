@@ -19,6 +19,9 @@ body{
 fieldset{
     border: none;
 }
+#formConnected{
+    display: none;
+}
 body>div,#window-reg{
     display: none;
 }

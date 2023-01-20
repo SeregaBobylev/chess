@@ -10,5 +10,7 @@ import java.util.UUID;
 @Repository
 public interface PlayerRepository extends CrudRepository<Player, UUID> {
     List<Player> findByNickname(String nickname);
+    List<Player> findByToken(String nickname);
+
 
 }

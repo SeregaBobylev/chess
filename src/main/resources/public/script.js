@@ -2,6 +2,8 @@
 var url ="http://109.201.66.2:8080";
 var chars = ['a','b','c','d','e','f','g','h'];
 var stompClient = null,cellTemp=null;
+var socket,uuid,
+endCage,startCage;
 $(function () {
     $.ajaxSetup({
         contentType: "application/json",
@@ -33,7 +35,13 @@ function createPlay(){
     $.ajax({
         url: `${url}/api/game/create`,
         success: function (res) {
-            console.log(res);
+            $("#menu").hide(100);
+            $("#play").show(100);
+            uuid=res.uuid;
+            $("#panel").html(`uuid : ${res.uuid} , status : ${res.status}`);
+            reset();
+            connectWebSocket();
+            // onConnected();
         }
     });
 }
@@ -90,6 +98,7 @@ function registerUser() {
 }
 
 function reset() {
+    createBoard();
     $(".figure").remove();
     chars.forEach(e=>{
         $(`#2${e}`).html("<img class=figure src='figure/wP.svg'>");
@@ -136,22 +145,71 @@ function createBoard() {
 $("body").on("click","th",function () {
     if(!cellTemp){
         cellTemp = $(this).attr("id");
+        // startCage=cellTemp;
+        startCage = $(this).attr("id");
         $(this).addClass("select_cell");
     }
     else{
         block = $(`#${cellTemp}>.figure`);
-        console.log(block);
-        if($(this).html()=="")
-        $(this).html(block);
-        else return;
+        // console.log(block);
+        // if($(this).html()==""){
+            endCage= $(this).attr("id");
+            sendMessage();
+            // $(this).html(block);
+        // }
+        // else return;
         $(`#${cellTemp}`).removeClass("select_cell");
         cellTemp=null;
+        
     }
 });
+const onConnected = () => {
+    console.log("connected!!!");
+    stompClient.subscribe(
+      `/game/${uuid}/message`,onMessageReceived
+    );
+  };
 function connectWebSocket() {
-    var socket = new SockJS(`http://${url}:8080/ws`);
+    socket = new SockJS(`${url}/ws`);
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
-    });
+    stompClient.connect({},onConnected, onError);
 }
+const onError = ()=>{
+    console.log("error");
+}
+function onMessageReceived(msg){
+    console.log(msg);
+    let body  = JSON.parse(msg.body);
+    figure = $(`#${body.start}>.figure`);
+    $(`#${body.start}>.figure`).html("");
+    console.log($(`#${body.end}>.figure`));
+    if($(`#${body.end}>.figure`).length==1) $(`#${body.end}`).html("");
+    $(`#${body.end}`).html(figure);
+    
+}
+const sendMessage = () => {
+      let message = {
+        uuid:uuid,
+        start:startCage,
+        end:endCage
+      };
+      stompClient.send(`/send/step`,{},JSON.stringify(message));
+      startCage=null;
+      endCage=null;
+    
+  };
+  function connectedGame(){
+    uuid = $("#uuidConnect").val();
+    $.ajax({
+        url: `${url}/api/game/connected/${uuid}`,
+        success: function (res) {
+            $("#menu").hide(100);
+            $("#play").show(100);
+            uuid=res.uuid;
+            $("#panel").html(`uuid : ${res.uuid} , status : ${res.status}`);
+            reset();
+            connectWebSocket();
+        }
+    });
+
+  }

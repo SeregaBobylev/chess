@@ -66,8 +66,9 @@ public class GameService {
     }
 
     //
-    public Game connected(UUID uuidGame, Player player) {
+    public Game connected(UUID uuidGame, String  token) {
 //        Game game = games.get(uuid);
+        Player player = playerRepository.findByToken(token).get(0);
         Game game = getMap(uuidGame);
         if (game.getStatus() != GameStatus.WAIT_PLAYER) {
 //            exception

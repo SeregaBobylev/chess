@@ -28,13 +28,13 @@ public class GameController {
 
 
     @GetMapping("/create")
-    public GameDTO createGame(@CookieValue String token,@CookieValue String nickname){
+    public GameDTO createGame(@CookieValue("token") String token,@CookieValue("nickname") String nickname){
         return gameMapper.toDTO(gameService.create(new PlayerIdentificationDTO(nickname,token)));
     }
-    @PostMapping("/connected/{uuid}")
-    public GameDTO connectedGame(@PathVariable UUID uuid,@RequestBody Player player){
-        System.out.println(player);
-        return gameMapper.toDTO(gameService.connected(uuid,player));
+    @GetMapping("/connected/{uuid}")
+    public GameDTO connectedGame(@PathVariable UUID uuid,@CookieValue String token){
+        System.out.println(token);
+        return gameMapper.toDTO(gameService.connected(uuid,token));
     }
     @PostMapping("/{uuidPlayer}/{uuidGame}/step")
     public Boolean step(@PathVariable UUID uuidGame,@PathVariable UUID uuidPlayer,@RequestBody StepDTO stepDTO){

@@ -49,14 +49,19 @@
         <fieldset>
             <legend>Меню</legend>
         <div class="button" data-name="create" onclick="createPlay();">Создать игру</div>
-        <div class="button" data-name="connect" onclick="showInputConnected();" >Подключиться к игре</div>
+        <div class="button" data-name="connect" onclick="$('#formConnected').show(200);" >Подключиться к игре</div>
+        <div id="formConnected">
+            <input type="text" id="uuidConnect">
+            <div class="button" onclick="connectedGame();"></div>
+
+        </div> 
         <div class="button" data-name="setting">Настройки</div>
         <div class="button" data-name="exit" onclick="deleteCookies();">Выход</div>
         </fieldset>
         
     </div>
     <div id="play">
-        <div id="panel">Панель</div>
+        <div id="panel"></div>
         <div id="board">
             <table>
                 <tr>
